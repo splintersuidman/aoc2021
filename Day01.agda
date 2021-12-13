@@ -13,6 +13,7 @@ open import Data.Unit as ⊤
 open import Function
 open import IO
 open import Level as Level
+open import Util
 
 private
   variable
@@ -21,11 +22,6 @@ private
     B : Set b
     C : Set c
     D : Set d
-
-catMaybes : List (Maybe A) → List A
-catMaybes [] = []
-catMaybes (just x ∷ xs) = x ∷ catMaybes xs
-catMaybes (nothing ∷ xs) = catMaybes xs
 
 solve₁ : List ℕ → ℕ
 solve₁ ds = sum $
