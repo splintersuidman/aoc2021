@@ -15,6 +15,8 @@ open import Data.Unit as ⊤
 open import Function
 open import IO
 open import Level as Level
+
+open import Base
 open import Util
 
 data Command : Set where
@@ -44,9 +46,9 @@ command₂ (x , y , a) (forward z) = (x + (+ z) , y + a * (+ z) , a)
 solve₂ : List Command → ℤ
 solve₂ = (λ (x , y , a) → x * y) ∘ foldl command₂ (+ 0 , + 0 , + 0)
 
-main = run $ do
-  input ← catMaybes ∘ List.map (parse ∘ words) ∘ lines
-    <$> readFiniteFile "input02"
-  putStrLn $ showℤ $ solve₁ input
-  putStrLn $ showℤ $ solve₂ input
-  pure tt
+solution : Solution
+solution = record
+  { parse = catMaybes ∘ List.map (parse ∘ words) ∘ lines
+  ; solve₁ = showℤ ∘ solve₁
+  ; solve₂ = showℤ ∘ solve₂
+  }

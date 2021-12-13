@@ -13,6 +13,8 @@ open import Data.Unit as ⊤
 open import Function
 open import IO
 open import Level as Level
+
+open import Base
 open import Util
 
 private
@@ -37,9 +39,9 @@ solve₂ : List ℕ → ℕ
 solve₂ ds = solve₁ $
   zipWith₃ (λ d₁ d₂ d₃ → d₁ + d₂ + d₃) ds (drop 1 ds) (drop 2 ds)
 
-main = run $ do
-  input ← catMaybes ∘ List.map (readMaybe 10) ∘ lines
-    <$> readFiniteFile "input01"
-  putStrLn $ ℕ.show $ solve₁ input
-  putStrLn $ ℕ.show $ solve₂ input
-  pure tt
+solution : Solution
+solution = record
+  { parse = catMaybes ∘ List.map (readMaybe 10) ∘ lines
+  ; solve₁ = ℕ.show ∘ solve₁
+  ; solve₂ = ℕ.show ∘ solve₂
+  }
