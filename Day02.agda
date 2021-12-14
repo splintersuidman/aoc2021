@@ -40,12 +40,6 @@ module _ where
   parseCommands : ∀[ Parser [ List Command ] ]
   parseCommands = List⁺.toList <$> list⁺ (spaces ?&> parseCommand <&? box spaces)
 
-  parse : String → Maybe (List Command)
-  parse input = case runParser parseCommands input of λ
-    { (inj₁ _) → nothing
-    ; (inj₂ commands) → just commands
-    }
-
 command₁ : Command → ℤ × ℤ → ℤ × ℤ
 command₁ (forward z) (x , y) = (x + (+ z) , y)
 command₁ (down z) (x , y) = (x , y + (+ z))
@@ -64,7 +58,7 @@ solve₂ = (λ (x , y , a) → x * y) ∘ List.foldl command₂ (+ 0 , + 0 , + 0
 
 solution : Solution
 solution = record
-  { parse = parse
+  { parse = runParserMaybe parseCommands
   ; solve₁ = Maybe.maybe (showℤ ∘ solve₂) "No parse"
   ; solve₂ = Maybe.maybe (showℤ ∘ solve₂) "No parse"
   }

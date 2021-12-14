@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K --guardedness #-}
+{-# OPTIONS --guardedness #-}
 
 module Day01 where
 
