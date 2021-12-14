@@ -21,6 +21,7 @@ open import Base
 import Day01
 import Day02
 import Day03
+import Day04
 
 ∃′ : ∀ {a} {b} {A : Set a} → ({A} → Set b) → Set (a ⊔ b)
 ∃′ f = Σ _ (λ x → f {x})
@@ -30,6 +31,7 @@ solutions
   = (0ℓ , Day01.solution)
   ∷ (0ℓ , Day02.solution)
   ∷ (0ℓ , Day03.solution)
+  ∷ (0ℓ , Day04.solution)
   ∷ []
 
 readMaybeDay : String → Maybe (Fin _)
