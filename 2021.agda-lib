@@ -1,3 +1,0 @@
-name: 2021
-include: .
-depend: standard-library agdarsec

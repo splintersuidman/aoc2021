@@ -1,0 +1,3 @@
+name: aoc2021
+include: .
+depend: standard-library agdarsec
