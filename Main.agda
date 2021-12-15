@@ -23,6 +23,7 @@ import Day02
 import Day03
 import Day04
 import Day05
+import Day06
 
 ∃′ : ∀ {a} {b} {A : Set a} → ({A} → Set b) → Set (a ⊔ b)
 ∃′ f = Σ _ (λ x → f {x})
@@ -34,6 +35,7 @@ solutions
   ∷ (0ℓ , Day03.solution)
   ∷ (0ℓ , Day04.solution)
   ∷ (0ℓ , Day05.solution)
+  ∷ (0ℓ , Day06.solution)
   ∷ []
 
 readMaybeDay : String → Maybe (Fin _)
